@@ -15,9 +15,11 @@ import colors from './colors'
 import selectionSchemes from './selection-schemes'
 
 const formatHour = (hour: number): string => {
-  const h = hour === 0 || hour === 12 || hour === 24 ? 12 : hour % 12
-  const abb = hour < 12 || hour === 24 ? 'am' : 'pm'
-  return `${h}${abb}`
+  const m = hour % 1 === 0.5 ? '30' : '00'
+  const intHour = Math.floor(hour)
+  const h = intHour === 0 || intHour === 12 || intHour === 24 ? 12 : intHour % 12
+  const abb = intHour < 12 || intHour === 24 ? 'am' : 'pm'
+  return `${h}:${m}${abb}`
 }
 
 const Wrapper = styled.div`
@@ -149,7 +151,7 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
     this.cellToDate = new Map()
     for (let d = 0; d < props.numDays; d += 1) {
       const currentDay = []
-      for (let h = props.minTime; h <= props.maxTime; h += 1) {
+      for (let h = props.minTime; h <= props.maxTime; h += 0.5) {
         currentDay.push(addHours(addDays(startTime, d), h))
       }
       this.dates.push(currentDay)
@@ -295,9 +297,9 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
 
   renderTimeLabels = (): React.Element<*> => {
     const labels = [<DateLabel key={-1} />] // Ensures time labels start at correct location
-    for (let t = this.props.minTime; t <= this.props.maxTime; t += 1) {
+    for (let t = this.props.minTime; t <= this.props.maxTime; t += 0.5) {
       labels.push(
-        <TimeLabelCell key={t}>
+        <TimeLabelCell key={t.toString()}>
           <TimeText>{formatHour(t)}</TimeText>
         </TimeLabelCell>
       )

@@ -55,34 +55,36 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var formatHour = function formatHour(hour) {
-  var h = hour === 0 || hour === 12 || hour === 24 ? 12 : hour % 12;
-  var abb = hour < 12 || hour === 24 ? 'am' : 'pm';
-  return '' + h + abb;
+  var m = hour % 1 === 0.5 ? '30' : '00';
+  var intHour = Math.floor(hour);
+  var h = intHour === 0 || intHour === 12 || intHour === 24 ? 12 : intHour % 12;
+  var abb = intHour < 12 || intHour === 24 ? 'am' : 'pm';
+  return h + ':' + m + abb;
 };
 
-var Wrapper = (0, _styledComponents2.default)('div').withConfig({
+var Wrapper = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__Wrapper',
   componentId: 'sc-10qe3m2-0'
 })(['display:flex;align-items:center;width:100%;user-select:none;']);
 
-var Grid = (0, _styledComponents2.default)('div').withConfig({
+var Grid = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__Grid',
   componentId: 'sc-10qe3m2-1'
 })(['display:flex;flex-direction:row;align-items:stretch;width:100%;']);
 
-var Column = (0, _styledComponents2.default)('div').withConfig({
+var Column = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__Column',
   componentId: 'sc-10qe3m2-2'
 })(['display:flex;flex-direction:column;justify-content:space-evenly;flex-grow:1;']);
 
-var GridCell = exports.GridCell = (0, _styledComponents2.default)('div').withConfig({
+var GridCell = exports.GridCell = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__GridCell',
   componentId: 'sc-10qe3m2-3'
 })(['margin:', 'px;touch-action:none;'], function (props) {
   return props.margin;
 });
 
-var DateCell = (0, _styledComponents2.default)('div').withConfig({
+var DateCell = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__DateCell',
   componentId: 'sc-10qe3m2-4'
 })(['width:100%;height:25px;background-color:', ';&:hover{background-color:', ';}'], function (props) {
@@ -96,7 +98,7 @@ var DateLabel = (0, _styledComponents2.default)(_typography.Subtitle).withConfig
   componentId: 'sc-10qe3m2-5'
 })(['height:30px;@media (max-width:699px){font-size:12px;}']);
 
-var TimeLabelCell = (0, _styledComponents2.default)('div').withConfig({
+var TimeLabelCell = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__TimeLabelCell',
   componentId: 'sc-10qe3m2-6'
 })(['position:relative;display:block;width:100%;height:25px;margin:3px 0;text-align:center;display:flex;justify-content:center;align-items:center;']);
@@ -121,10 +123,10 @@ var ScheduleSelector = function (_React$Component) {
 
     _this.renderTimeLabels = function () {
       var labels = [React.createElement(DateLabel, { key: -1 })]; // Ensures time labels start at correct location
-      for (var t = _this.props.minTime; t <= _this.props.maxTime; t += 1) {
+      for (var t = _this.props.minTime; t <= _this.props.maxTime; t += 0.5) {
         labels.push(React.createElement(
           TimeLabelCell,
-          { key: t },
+          { key: t.toString() },
           React.createElement(
             TimeText,
             null,
@@ -216,7 +218,7 @@ var ScheduleSelector = function (_React$Component) {
     _this.cellToDate = new Map();
     for (var d = 0; d < props.numDays; d += 1) {
       var currentDay = [];
-      for (var h = props.minTime; h <= props.maxTime; h += 1) {
+      for (var h = props.minTime; h <= props.maxTime; h += 0.5) {
         currentDay.push((0, _add_hours2.default)((0, _add_days2.default)(startTime, d), h));
       }
       _this.dates.push(currentDay);
