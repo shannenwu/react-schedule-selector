@@ -64,29 +64,29 @@ var formatHour = function formatHour(hour) {
 
 var Wrapper = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__Wrapper',
-  componentId: 'sc-10qe3m2-0'
+  componentId: 'sc-1m7sagr-0'
 })(['display:flex;align-items:center;width:100%;user-select:none;']);
 
 var Grid = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__Grid',
-  componentId: 'sc-10qe3m2-1'
+  componentId: 'sc-1m7sagr-1'
 })(['display:flex;flex-direction:row;align-items:stretch;width:100%;']);
 
 var Column = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__Column',
-  componentId: 'sc-10qe3m2-2'
+  componentId: 'sc-1m7sagr-2'
 })(['display:flex;flex-direction:column;justify-content:space-evenly;flex-grow:1;']);
 
 var GridCell = exports.GridCell = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__GridCell',
-  componentId: 'sc-10qe3m2-3'
+  componentId: 'sc-1m7sagr-3'
 })(['margin:', 'px;touch-action:none;'], function (props) {
   return props.margin;
 });
 
 var DateCell = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__DateCell',
-  componentId: 'sc-10qe3m2-4'
+  componentId: 'sc-1m7sagr-4'
 })(['width:100%;height:25px;background-color:', ';&:hover{background-color:', ';}'], function (props) {
   return props.selected ? props.selectedColor : props.unselectedColor;
 }, function (props) {
@@ -95,17 +95,17 @@ var DateCell = _styledComponents2.default.div.withConfig({
 
 var DateLabel = (0, _styledComponents2.default)(_typography.Subtitle).withConfig({
   displayName: 'ScheduleSelector__DateLabel',
-  componentId: 'sc-10qe3m2-5'
+  componentId: 'sc-1m7sagr-5'
 })(['height:30px;@media (max-width:699px){font-size:12px;}']);
 
 var TimeLabelCell = _styledComponents2.default.div.withConfig({
   displayName: 'ScheduleSelector__TimeLabelCell',
-  componentId: 'sc-10qe3m2-6'
+  componentId: 'sc-1m7sagr-6'
 })(['position:relative;display:block;width:100%;height:25px;margin:3px 0;text-align:center;display:flex;justify-content:center;align-items:center;']);
 
 var TimeText = (0, _styledComponents2.default)(_typography.Text).withConfig({
   displayName: 'ScheduleSelector__TimeText',
-  componentId: 'sc-10qe3m2-7'
+  componentId: 'sc-1m7sagr-7'
 })(['margin:0;@media (max-width:699px){font-size:10px;}text-align:right;']);
 
 var preventScroll = exports.preventScroll = function preventScroll(e) {
@@ -329,7 +329,6 @@ var ScheduleSelector = function (_React$Component) {
         });
       });
     }
-
     this.setState({ selectionDraft: nextDraft }, callback);
   };
 

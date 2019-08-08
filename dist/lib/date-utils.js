@@ -27,5 +27,17 @@ var dateIsBetween = exports.dateIsBetween = function dateIsBetween(start, candid
 };
 
 var timeIsBetween = exports.timeIsBetween = function timeIsBetween(start, candidate, end) {
-  return candidate.getHours() >= start.getHours() && candidate.getHours() <= end.getHours();
+  var afterStart = false;
+  var beforeEnd = false;
+  if (start.getHours() == candidate.getHours() && start.getMinutes() <= candidate.getMinutes()) {
+    afterStart = true;
+  } else if (start.getHours() < candidate.getHours()) {
+    afterStart = true;
+  }
+  if (end.getHours() == candidate.getHours() && end.getMinutes() >= candidate.getMinutes()) {
+    beforeEnd = true;
+  } else if (end.getHours() > candidate.getHours()) {
+    beforeEnd = true;
+  }
+  return afterStart && beforeEnd;
 };

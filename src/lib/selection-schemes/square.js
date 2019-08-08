@@ -12,7 +12,6 @@ const square = (selectionStart: ?Date, selectionEnd: ?Date, dateList: Array<Arra
   } else if (selectionStart) {
     const dateIsReversed = isBefore(startOfDay(selectionEnd), startOfDay(selectionStart))
     const timeIsReversed = selectionStart.getHours() > selectionEnd.getHours()
-
     selected = dateList.reduce(
       (acc, dayOfTimes) =>
         acc.concat(
@@ -35,7 +34,6 @@ const square = (selectionStart: ?Date, selectionEnd: ?Date, dateList: Array<Arra
       []
     )
   }
-
   return selected
 }
 

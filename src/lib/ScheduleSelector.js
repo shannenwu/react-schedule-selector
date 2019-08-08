@@ -246,7 +246,6 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
     } else if (selectionType === 'remove') {
       nextDraft = nextDraft.filter(a => !newSelection.find(b => isSameMinute(a, b)))
     }
-
     this.setState({ selectionDraft: nextDraft }, callback)
   }
 

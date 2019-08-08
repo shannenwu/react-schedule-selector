@@ -15,12 +15,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Subtitle = exports.Subtitle = _styledComponents2.default.h2.withConfig({
   displayName: 'typography__Subtitle',
-  componentId: 'sc-1nxgjrj-0'
+  componentId: 'ujcwq8-0'
 })(['font-size:20px;font-weight:400;color:', ';text-align:', ';@media (max-width:700px){font-size:18px;}'], _colors2.default.black, function (props) {
   return props.align || 'center';
 });
 
 var Text = exports.Text = _styledComponents2.default.p.withConfig({
   displayName: 'typography__Text',
-  componentId: 'sc-1nxgjrj-1'
+  componentId: 'ujcwq8-1'
 })(['font-size:14px;font-weight:300;line-height:', 'px;color:', ';margin:5px 0;'], 14 * 1.37, _colors2.default.grey);

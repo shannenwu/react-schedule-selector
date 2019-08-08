@@ -25,14 +25,12 @@ var square = function square(selectionStart, selectionEnd, dateList) {
   } else if (selectionStart) {
     var dateIsReversed = (0, _is_before2.default)((0, _start_of_day2.default)(selectionEnd), (0, _start_of_day2.default)(selectionStart));
     var timeIsReversed = selectionStart.getHours() > selectionEnd.getHours();
-
     selected = dateList.reduce(function (acc, dayOfTimes) {
       return acc.concat(dayOfTimes.filter(function (t) {
         return selectionStart && selectionEnd && dateUtils.dateIsBetween(dateIsReversed ? selectionEnd : selectionStart, t, dateIsReversed ? selectionStart : selectionEnd) && dateUtils.timeIsBetween(timeIsReversed ? selectionEnd : selectionStart, t, timeIsReversed ? selectionStart : selectionEnd);
       }));
     }, []);
   }
-
   return selected;
 };
 
